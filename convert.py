@@ -1,18 +1,18 @@
 # SYNTAX: python convert.py <file name>
 import sys
 
-file = ""
-new_file = ""
+f = ""
+new_f = ""
 
 try:
-    file = open(sys.argv[1])
-    new_file = open(sys.argv[1].split(".")[0] + "_new.cls", "w")
+    f = open(sys.argv[1])
+    new_f = open(sys.argv[1].split(".")[0] + "_new.cls", "w")
 except IndexError:
     print("You have to specify filename")
     exit(1)
 
 
-body = file.read().replace("    ", "\t")
+body = f.read().replace("    ", "\t")
 body = body.replace("> ", ">")
 body = body.replace(">", "> ")
 body = body.replace("> (", ">(")
@@ -41,4 +41,4 @@ body = body.replace(")\n\t\t\t\t\t{", ") {")
 body = body.replace(")\n\t\t\t\t\t\t{", ") {")
 body = body.replace("static TestMethod", "@isTest\n\tstatic")
 
-new_file.write(body)
+new_f.write(body)
