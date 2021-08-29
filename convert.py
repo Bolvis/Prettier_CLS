@@ -8,7 +8,7 @@ try:
     file = open(sys.argv[1])
     new_file = open(sys.argv[1].split(".")[0] + "_new.cls", "w")
 except IndexError:
-    print("You have to speficy filename")
+    print("You have to specify filename")
     exit(1)
 
 
