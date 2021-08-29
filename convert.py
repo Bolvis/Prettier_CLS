@@ -42,5 +42,3 @@ body = body.replace(")\n\t\t\t\t\t\t{", ") {")
 body = body.replace("static TestMethod", "@isTest\n\tstatic")
 
 new_file.write(body)
-# # should be used with ">" in shell to save in desired file
-# print(body)
