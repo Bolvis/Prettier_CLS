@@ -1,4 +1,4 @@
-# SYNTAX: python convert.py <file name> > <output file name>
+# SYNTAX: python convert.py <file name>
 import sys
 
 file = ""
