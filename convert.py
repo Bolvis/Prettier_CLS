@@ -78,8 +78,10 @@ body = body.replace("for(", "for (")
 body = body.replace("if(", "if (")
 body = body.replace("else{", "else {")
 body = body.replace("){", ") {")
+body = body.replace(")>", ") >")
+body = body.replace(")<", ") <")
 
-for i in range(1, 8):
+for i in range(1, 10):
     body = body.replace(")\n" + (i * "\t") + "{", ") {")
     body = body.replace("else\n" + (i * "\t") + "{", "else {")
 
