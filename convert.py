@@ -1,6 +1,16 @@
 # SYNTAX: python convert.py <file 1 name> <file 2 name> ... <file n name>
 import sys
 
+
+def fix_operators(text, operator, operator_name):
+    text = text.replace(operator, operator_name)
+    text = text.replace(operator_name + " ", operator_name)
+    text = text.replace(" " + operator_name, operator_name)
+    text = text.replace(" " + operator_name + " ", operator_name)
+    text = text.replace(operator_name, " " + operator_name + " ")
+    return text
+
+
 for f_name in sys.argv[1:]:
     try:
         f = open(f_name, "r+")
@@ -8,20 +18,10 @@ for f_name in sys.argv[1:]:
         print("\033[1;31;40mFile does not exist: " + f_name)
         continue
 
-
-    def fix_operators(text, operator, operator_name):
-        text = text.replace(operator, operator_name)
-        text = text.replace(operator_name + " ", operator_name)
-        text = text.replace(" " + operator_name, operator_name)
-        text = text.replace(" " + operator_name + " ", operator_name)
-        text = text.replace(operator_name, " " + operator_name + " ")
-        return text
-
-
     # MANAGE FILES
     body = f.read()
     f.close()
-    f = open(f_name, "w")
+    f_new = open(f_name, "w")
     f_name_array = f_name.split(".")
     try:
         f_backup = open(f_name_array[0] + "_old." + f_name_array[1], "w")
@@ -32,7 +32,7 @@ for f_name in sys.argv[1:]:
 
     # SPACING
     body = body.replace("    ", "\t")  # change 4 spaces to one tab
-    body = body.replace("   ", "\t")  # change 3 spaces to one tab to fix spacing
+    body = body.replace("   ", "\t") # change 3 spaces to one tab to fix spacing
     body = body.replace("  ", "")  # remove all 2 spaces symbols to fix spacing
 
     # CHANGE OPERATORS TO WORDS
@@ -138,7 +138,7 @@ for f_name in sys.argv[1:]:
     body = body.replace("DOCU_BODY", "**")
     body = body.replace("DOCU_END", "**/")
 
-    f.write(body)
-    f.close()
+    f_new.write(body)
+    f_new.close()
 
     print("\033[1;32;40mFile: " + f_name + " successfully saved")
