@@ -2,10 +2,6 @@
 import sys
 
 for f_name in sys.argv[1:]:
-    f = ""
-    new_f = ""
-    new_f_name = ""
-
     try:
         f = open(f_name, "r+")
     except FileNotFoundError:
@@ -27,14 +23,12 @@ for f_name in sys.argv[1:]:
     f.close()
     f = open(f_name, "w")
     f_name_array = f_name.split(".")
-    # f_backup = ""
     try:
         f_backup = open(f_name_array[0] + "_old." + f_name_array[1], "w")
     except IndexError:
         f_backup = open(f_name + ".old", "w")
     f_backup.write(body)
     f_backup.close()
-    f.truncate(0)
 
     # SPACING
     body = body.replace("    ", "\t")  # change 4 spaces to one tab
