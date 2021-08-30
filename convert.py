@@ -1,7 +1,7 @@
 # SYNTAX: python convert.py <file 1 name> <file 2 name> ... <file n name>
 import sys
 
-for f_name in sys.argv:
+for f_name in sys.argv[1:]:
     f = ""
     new_f = ""
     new_f_name = ""
