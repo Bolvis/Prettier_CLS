@@ -3,10 +3,12 @@ import sys
 
 f = ""
 new_f = ""
+new_f_name = ""
 
 try:
     f = open(sys.argv[1])
-    new_f = open(sys.argv[1].split(".")[0] + "_new.cls", "w")
+    new_f_name = sys.argv[1].split(".")[0] + "_new.cls"
+    new_f = open(new_f_name, "w")
 except IndexError:
     print("You have to specify filename")
     exit(1)
@@ -107,3 +109,5 @@ body = body.replace("BOOLEAN_AND", "&&")
 
 new_f.write(body)
 new_f.close()
+
+print("File " + new_f_name + " successfully saved")
