@@ -10,6 +10,9 @@ try:
 except IndexError:
     print("You have to specify filename")
     exit(1)
+except FileNotFoundError:
+    print("File does not exist: " + sys.argv[1])
+    exit(1)
 
 
 def fix_operators(text, operator, operator_name):
