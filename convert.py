@@ -21,9 +21,10 @@ def fix_operators(text, operator, operator_name):
     return text
 
 
-body = f.read().replace("    ", "\t")
+body = f.read().replace("    ", "\t")  # change 4 spaces to one tab
 f.close()
-body = body.replace("   ", "\t")
+body = body.replace("   ", "\t")  # change 3 spaces to one tab to fix spacing
+body = body.replace("  ", "")  # remove all 2 spaces symbols to fix spacing
 body = body.replace("//", "COMMENT_DASH_DASH")
 body = body.replace("/*", "COMMENT_DASH_STAR")
 body = body.replace("*/", "COMMENT_STAR_DASH")
@@ -37,6 +38,8 @@ body = fix_operators(body, "-", "SUBTRACT_VALUES")
 body = fix_operators(body, "*", "MULTIPLY_VALUES")
 body = fix_operators(body, "/", "DIVIDE_VALUES")
 body = fix_operators(body, ":", "ARRAY_SYMBOL")
+body = fix_operators(body, "||", "BOOLEAN_OR")
+body = fix_operators(body, "&&", "BOOLEAN_AND")
 body = body.replace("> ", ">")
 body = body.replace(">", "> ")
 body = body.replace("> (", ">(")
@@ -93,6 +96,8 @@ body = body.replace("SUBTRACT_VALUES", "-")
 body = body.replace("MULTIPLY_VALUES", "*")
 body = body.replace("DIVIDE_VALUES", "/")
 body = body.replace("ARRAY_SYMBOL", ":")
-body = body.replace("  ", "")
+body = body.replace("BOOLEAN_OR", "||")
+body = body.replace("BOOLEAN_AND", "&&")
 
 new_f.write(body)
+new_f.close()
