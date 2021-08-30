@@ -7,7 +7,8 @@ new_f_name = ""
 
 try:
     f = open(sys.argv[1])
-    new_f_name = sys.argv[1].split(".")[0] + "_new.cls"
+    f_name_array = sys.argv[1].split(".")
+    new_f_name = f_name_array[0] + "_new." + f_name_array[1]
     new_f = open(new_f_name, "w")
 except IndexError:
     print("You have to specify filename")
@@ -66,10 +67,12 @@ body = body.replace("from", "FROM")
 body = body.replace("From", "FROM")
 body = body.replace("where", "WHERE")
 body = body.replace("Where", "WHERE")
-body = body.replace("in", "IN")
-body = body.replace("In", "IN")
 body = body.replace("If", "if")
 body = body.replace("IF", "if")
+body = body.replace("id,", "Id,")
+body = body.replace("id>", "Id>")
+body = body.replace("<id", "<Id")
+body = body.replace(".id", ".Id")
 body = body.replace("INsert", "insert")
 body = body.replace("Insert", "insert")
 body = body.replace("INSERT", "insert")
@@ -106,6 +109,8 @@ body = body.replace("DIVIDE_VALUES", "/")
 body = body.replace("ARRAY_SYMBOL", ":")
 body = body.replace("BOOLEAN_OR", "||")
 body = body.replace("BOOLEAN_AND", "&&")
+body = body.replace(" in ", " IN ")
+body = body.replace(" In ", " IN ")
 
 new_f.write(body)
 new_f.close()
