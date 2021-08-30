@@ -12,10 +12,10 @@ for f_name in sys.argv[1:]:
         new_f_name = f_name_array[0] + "_new." + f_name_array[1]
         new_f = open(new_f_name, "w")
     except IndexError:
-        print("You have to specify filename")
+        print("\033[1;31;40mYou have to specify filename")
         continue
     except FileNotFoundError:
-        print("File does not exist: " + f_name)
+        print("\033[1;31;40mFile does not exist: " + f_name)
         continue
 
 
@@ -126,4 +126,4 @@ for f_name in sys.argv[1:]:
     new_f.write(body)
     new_f.close()
 
-    print("File " + new_f_name + " successfully saved")
+    print("\033[1;32;40mFile: " + new_f_name + " successfully saved")
