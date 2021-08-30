@@ -7,13 +7,7 @@ for f_name in sys.argv[1:]:
     new_f_name = ""
 
     try:
-        f = open(f_name)
-        f_name_array = f_name.split(".")
-        new_f_name = f_name_array[0] + "_new." + f_name_array[1]
-        new_f = open(new_f_name, "w")
-    except IndexError:
-        print("\033[1;31;40mYou have to specify filename")
-        continue
+        f = open(f_name, "r+")
     except FileNotFoundError:
         print("\033[1;31;40mFile does not exist: " + f_name)
         continue
@@ -28,9 +22,22 @@ for f_name in sys.argv[1:]:
         return text
 
 
-    # SPACING
-    body = f.read().replace("    ", "\t")  # change 4 spaces to one tab
+    # MANAGE FILES
+    body = f.read()
     f.close()
+    f = open(f_name, "w")
+    f_name_array = f_name.split(".")
+    # f_backup = ""
+    try:
+        f_backup = open(f_name_array[0] + "_old." + f_name_array[1], "w")
+    except IndexError:
+        f_backup = open(f_name + ".old", "w")
+    f_backup.write(body)
+    f_backup.close()
+    f.truncate(0)
+
+    # SPACING
+    body = body.replace("    ", "\t")  # change 4 spaces to one tab
     body = body.replace("   ", "\t")  # change 3 spaces to one tab to fix spacing
     body = body.replace("  ", "")  # remove all 2 spaces symbols to fix spacing
 
@@ -64,6 +71,9 @@ for f_name in sys.argv[1:]:
     body = body.replace(", ", ",")
     body = body.replace(",", ", ")
     body = body.replace("string ", "String ")
+    body = body.replace("map", "Map")
+    body = body.replace("decimal", "Decimal")
+    body = body.replace("boolean ", "Boolean ")
     body = body.replace("system", "System")
     body = body.replace("set<", "Set<")
     body = body.replace("set <", "Set<")
@@ -77,6 +87,15 @@ for f_name in sys.argv[1:]:
     body = body.replace("From", "FROM")
     body = body.replace("where", "WHERE")
     body = body.replace("Where", "WHERE")
+    body = body.replace(" Order by ", " ORDER BY ")
+    body = body.replace(" Order By ", " ORDER BY ")
+    body = body.replace(" order by ", " ORDER BY ")
+    body = body.replace(" Desc ", "DESC")
+    body = body.replace(" Asc ", " ASC ")
+    body = body.replace(" Or ", " OR ")
+    body = body.replace(" or ", " OR ")
+    body = body.replace(" And ", " AND ")
+    body = body.replace(" and ", " AND ")
     body = body.replace("If", "if")
     body = body.replace("IF", "if")
     body = body.replace(" in ", " IN ")
@@ -98,6 +117,8 @@ for f_name in sys.argv[1:]:
     body = body.replace(")>", ") >")
     body = body.replace(")<", ") <")
     body = body.replace("static TestMethod", "@isTest\n\tstatic")
+    body = body.replace("System.UserInfo", "UserInfo")
+    body = body.replace("UserInfo", "System.UserInfo")
 
     for i in range(1, 10):
         body = body.replace(")\n" + (i * "\t") + "{", ") {")
@@ -123,7 +144,7 @@ for f_name in sys.argv[1:]:
     body = body.replace("DOCU_BODY", "**")
     body = body.replace("DOCU_END", "**/")
 
-    new_f.write(body)
-    new_f.close()
+    f.write(body)
+    f.close()
 
-    print("\033[1;32;40mFile: " + new_f_name + " successfully saved")
+    print("\033[1;32;40mFile: " + f_name + " successfully saved")
