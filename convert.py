@@ -69,7 +69,7 @@ for f_name in sys.argv[1:]:
     body = body.replace("decimal", "Decimal")
     body = body.replace("boolean ", "Boolean ")
     body = body.replace("integer ", "Integer ")
-    body = body.replace("system", "System")
+    body = body.replace("system.", "System.")
     body = body.replace("set<", "Set<")
     body = body.replace("set <", "Set<")
     body = body.replace("list <", "List<")
