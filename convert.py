@@ -32,7 +32,8 @@ for f_name in sys.argv[1:]:
 
     # SPACING
     body = body.replace("    ", "\t")  # change 4 spaces to one tab
-    body = body.replace("   ", "\t") # change 3 spaces to one tab to fix spacing
+    # change 3 spaces to one tab to fix spacing
+    body = body.replace("   ", "\t")
     body = body.replace("  ", "")  # remove all 2 spaces symbols to fix spacing
 
     # CHANGE OPERATORS TO WORDS
@@ -65,7 +66,7 @@ for f_name in sys.argv[1:]:
     body = body.replace(", ", ",")
     body = body.replace(",", ", ")
     body = body.replace("string ", "String ")
-    body = body.replace("map", "Map")
+    body = body.replace("map<", "Map<")
     body = body.replace("decimal", "Decimal")
     body = body.replace("boolean ", "Boolean ")
     body = body.replace("integer ", "Integer ")
@@ -76,12 +77,12 @@ for f_name in sys.argv[1:]:
     body = body.replace("list<", "List<")
     body = body.replace("test.", "Test.")
     body = body.replace("@istest", "@isTest")
-    body = body.replace("select", "SELECT")
-    body = body.replace("Select", "SELECT")
-    body = body.replace("from", "FROM")
-    body = body.replace("From", "FROM")
-    body = body.replace("where", "WHERE")
-    body = body.replace("Where", "WHERE")
+    body = body.replace(" select ", " SELECT ")
+    body = body.replace(" Select ", "SELECT")
+    body = body.replace(" from ", " FROM ")
+    body = body.replace(" From ", " FROM ")
+    body = body.replace(" where ", " WHERE ")
+    body = body.replace(" Where ", " WHERE ")
     body = body.replace(" Order by ", " ORDER BY ")
     body = body.replace(" Order By ", " ORDER BY ")
     body = body.replace(" order by ", " ORDER BY ")
@@ -91,8 +92,8 @@ for f_name in sys.argv[1:]:
     body = body.replace(" or ", " OR ")
     body = body.replace(" And ", " AND ")
     body = body.replace(" and ", " AND ")
-    body = body.replace("If", "if")
-    body = body.replace("IF", "if")
+    body = body.replace("\tIf", "\tif")
+    body = body.replace("\tIF", "\tif")
     body = body.replace(" in ", " IN ")
     body = body.replace(" In ", " IN ")
     body = body.replace("id,", "Id,")
@@ -124,10 +125,10 @@ for f_name in sys.argv[1:]:
     body = body.replace("COMMENT_DASH_DASH", "//")
     body = body.replace("COMMENT_DASH_STAR", "/*")
     body = body.replace("COMMENT_STAR_DASH", "*/")
-    body = body.replace("LOQ", ">=")
-    body = body.replace("EQUAL", "==")
-    body = body.replace("GOQ", "<=")
     body = body.replace("NOT_EQUAL", "!=")
+    body = body.replace("LOQ", ">=")
+    body = body.replace("GOQ", "<=")
+    body = body.replace("EQUAL", "==")
     body = body.replace("ASSIGN_VALUE", "=")
     body = body.replace("ADD_VALUES", "+")
     body = body.replace("SUBTRACT_VALUES", "-")
