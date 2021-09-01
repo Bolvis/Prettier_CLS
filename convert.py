@@ -99,6 +99,7 @@ for f_name in sys.argv[1:]:
     body = body.replace("id>", "Id>")
     body = body.replace("<id", "<Id")
     body = body.replace(".id", ".Id")
+    body = body.replace(" id ", " Id ")
     body = body.replace("Insert", "insert")
     body = body.replace("INSERT", "insert")
     body = body.replace("Update", "update")
