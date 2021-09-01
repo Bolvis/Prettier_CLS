@@ -74,7 +74,7 @@ for f_name in sys.argv[1:]:
     body = body.replace("set <", "Set<")
     body = body.replace("list <", "List<")
     body = body.replace("list<", "List<")
-    body = body.replace("test", "Test")
+    body = body.replace("test.", "Test.")
     body = body.replace("@istest", "@isTest")
     body = body.replace("select", "SELECT")
     body = body.replace("Select", "SELECT")
