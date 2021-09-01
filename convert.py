@@ -15,7 +15,7 @@ for f_name in sys.argv[1:]:
     try:
         f = open(f_name, "r+")
     except FileNotFoundError:
-        print("\033[1;31;40mFile does not exist: " + f_name)
+        print("\033[1;31;40mFile: " + f_name + " does not exist")
         continue
 
     # MANAGE FILES
