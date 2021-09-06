@@ -67,7 +67,7 @@ for f_name in sys.argv[1:]:
     body = body.replace(",", ", ")
     body = body.replace("string ", "String ")
     body = body.replace("map<", "Map<")
-    body = body.replace("decimal", "Decimal")
+    body = body.replace("decimal ", "Decimal ")
     body = body.replace("boolean ", "Boolean ")
     body = body.replace("integer ", "Integer ")
     body = body.replace("system.", "System.")
