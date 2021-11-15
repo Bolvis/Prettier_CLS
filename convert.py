@@ -145,3 +145,4 @@ for f_name in sys.argv[1:]:
     f_new.close()
 
     print("\033[1;32;40mFile: " + f_name + " successfully saved")
+print("\033[97m\n")
